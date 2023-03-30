@@ -1,0 +1,199 @@
+@use "reset";
+
+// Custom properties
+:root {
+    --clr-primary-bar-1: 10 79% 65%;
+    --clr-primary-bar-2: 186 34% 60%;
+
+    --clr-neutral-heading: 25 47% 15%;
+    --clr-neutral-text: 28 10% 53%;
+    --clr-neutral-bg-body: 27 66% 92%;
+    --clr-neutral-bg-stats: 33 100% 98%;
+
+    --ff-general: "DM Sans", sans-serif;
+
+    --fw-regular: 400;
+    --fw-bold: 700;
+
+    --fs-general: 1.125rem;
+}
+
+// Utility classes
+%flex {
+    display: flex;
+}
+
+%grid {
+    display: grid;
+}
+
+@mixin border($radius) {
+    border-radius: $radius;
+    // overflow: hidden;
+}
+
+@mixin font($size, $weight: inherit) {
+    font: {
+        weight: $weight;
+        size: $size;
+    }
+}
+
+// Components
+body {
+    @extend %grid;
+    @include font(var(--fs-general), var(--fw-regular));
+
+    place-content: safe center;
+    font-family: var(--ff-general);
+    background-color: hsl(var(--clr-neutral-bg-body));
+
+    .sr-only {
+        display: none;
+    }
+}
+
+.chart {
+    @extend %flex;
+
+    flex-direction: column;
+    gap: 1rem;
+    max-width: max-content;
+
+    .chart__top {
+        @extend %grid;
+        @include border(1rem);
+
+        grid-template-columns: 3fr 1fr;
+        align-items: center;
+        padding: 1rem 2rem;
+        background-color: hsl(var(--clr-primary-bar-1));
+
+        .chart__balance {
+            --clr-general: white;
+
+            color: var(--clr-general);
+
+            h2 {
+                @include font(0.75rem);
+            }
+
+            p {
+                @include font(1.5rem, var(--fw-bold));
+            }
+        }
+
+        .chart__logo {
+            @extend %flex;
+
+            justify-self: end;
+            max-width: 75%;
+        }
+    }
+
+    .chart__stats {
+        @include border(1rem);
+
+        padding: 2rem;
+        background-color: hsl(var(--clr-neutral-bg-stats));
+
+        h2 {
+            font: {
+                weight: var(--fw-bold);
+                size: 1.5rem;
+            }
+
+            color: hsl(var(--clr-neutral-heading));
+        }
+
+        p {
+            color: hsl(var(--clr-neutral-text));
+        }
+
+        .chart__bars {
+            @extend %flex;
+
+            gap: 0.5rem;
+            padding-block: 1rem;
+
+            font: {
+                size: 0.875rem;
+            }
+        }
+    }
+
+    .chart__bottom {
+        @extend %flex;
+
+        justify-content: space-between;
+        padding-block: 1rem 0;
+        border-top: 0.125rem solid hsl(var(--clr-neutral-bg-body));
+
+        .chart__total {
+            @extend %flex;
+
+            flex-direction: column;
+            justify-content: flex-end;
+
+            h2 {
+                font-size: 2rem;
+            }
+        }
+
+        .chart__change {
+            @extend %flex;
+
+            flex-direction: column;
+            justify-content: flex-end;
+            align-items: flex-end;
+
+            h3 {
+                font: {
+                    weight: var(--fw-bold);
+                }
+            }
+        }
+    }
+}
+
+.chart__bar--general {
+    @extend %flex;
+
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+
+.chart__number {
+    @include border(0.25rem);
+
+    font-weight: var(--fw-bold);
+    visibility: hidden;
+    padding: 0.5rem;
+    color: hsl(var(--clr-neutral-bg-stats)) !important;
+    background-color: hsl(var(--clr-neutral-heading));
+}
+
+.chart__bar--general:hover .chart__number,
+.chart__number--active {
+    visibility: visible;
+}
+
+.chart__bar {
+    @include border(0.25rem);
+
+    width: 3rem;
+    margin-inline: auto;
+    background-color: hsl(var(--clr-primary-bar-1));
+
+    &:hover {
+        cursor: pointer;
+        opacity: 0.5;
+    }
+}
+
+.chart__bar--active {
+    background-color: hsl(var(--clr-primary-bar-2));
+}

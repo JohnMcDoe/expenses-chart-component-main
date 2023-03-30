@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@600&family=DM+Sans:wght@400;700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/dynamic-bars.js" defer></script>
+
+  <title>Frontend Mentor | Expenses chart component</title>
+</head>
+
+<body>
+  <main class="chart">
+    <h1 class="sr-only">Expenses chart</h1>
+    <article class="chart__top">
+      <section class="chart__balance">
+        <h2>My balance</h2>
+        <p>$921.48</p>
+      </section>
+      <section class="chart__logo">
+        <img src="images/logo.svg" alt="logo">
+      </section>
+    </article>
+    <article class="chart__stats">
+      <h2>Spending - Last 7 days</h2>
+      <section class="chart__bars">
+        <div class="chart__bar-1 chart__bar--general"></div>
+        <div class="chart__bar-2 chart__bar--general"></div>
+        <div class="chart__bar-3 chart__bar--general"></div>
+        <div class="chart__bar-4 chart__bar--general"></div>
+        <div class="chart__bar-5 chart__bar--general"></div>
+        <div class="chart__bar-6 chart__bar--general"></div>
+        <div class="chart__bar-7 chart__bar--general"></div>
+      </section>
+      <section class="chart__bottom">
+        <div class="chart__total">
+          <p>Total this month</p>
+          <h2>$478.33</h2>
+        </div>
+        <div class="chart__change">
+          <h3>+2.4%</h3>
+          <p>from last month</p>
+        </div>
+      </section>
+    </article>
+  </main>
+</body>
+
+</html>
